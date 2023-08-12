@@ -1,13 +1,22 @@
 import { CardapioDaLanchonete } from "./cardapio-da-lanchonete.js";
-
+import { RegrasPedidosLanchonete } from "./regras-pedidos-lanchonete.js";
 class CaixaDaLanchonete {
 
     calcularValorDaCompra(metodoDePagamento, itens) {
         const cardapio = new CardapioDaLanchonete();
+        const pedidoValido = new RegrasPedidosLanchonete();
+
         const total = itens.reduce((acc, item) => {
-        const [code, quantity] = item.split(',')
-        const itemById = cardapio.getItem(code);
-        return acc + itemById.value * parseInt(quantity);
+            const [code, quantity] = item.split(',')
+            if (pedidoValido.verificaPedidoFeito(code, quantity)) {
+             const itemById = cardapio.getItem(code);
+             return acc + itemById.value * parseInt(quantity);
+             
+        } else {
+            return acc;
+             
+          }
+          
      }, 0);
     
 
@@ -19,8 +28,10 @@ class CaixaDaLanchonete {
         case 'debito':
             return total;
         default:
-            throw new Error(`Metodo de pagamento ${metodoDePagamento} não suportado`);
+            throw new Error(`Forma de pagamento ${metodoDePagamento} inválda!`);
     }
     }
 }
+
+export { CaixaDaLanchonete };
 
