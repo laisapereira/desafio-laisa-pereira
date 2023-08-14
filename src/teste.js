@@ -2,7 +2,7 @@ import { CaixaDaLanchonete } from './caixa-da-lanchonete.js';
 
 const caixa = new CaixaDaLanchonete();
 
-const itens = [];
+const itens = [ 'sanduiche,1', 'combo1,2','queijo,2'];
 const metodoDePagamento = 'credito';
 
 const valorTotal = caixa.calcularValorDaCompra(metodoDePagamento, itens);

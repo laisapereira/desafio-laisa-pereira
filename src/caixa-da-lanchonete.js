@@ -8,14 +8,14 @@ class CaixaDaLanchonete {
 
         const total = itens.reduce((acc, item) => {
             const [code, quantity] = item.split(',')
-            if (pedidoValido.verificaPedidoFeito(code, quantity)) {
+           if (pedidoValido.verificaPedidoFeito(itens, code, quantity)) { 
              const itemById = cardapio.getItem(code);
              return acc + itemById.value * parseInt(quantity);
              
-        } else {
-            return acc;
+         } else {
+           return acc;
              
-          }
+          } 
           
      }, 0);
     
