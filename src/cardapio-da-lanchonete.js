@@ -1,52 +1,35 @@
 class CardapioDaLanchonete {
   constructor() {
-    this.items = [
-      {
-        code: "cafe",
-        description: "Café",
-        value: 3.00,
-      },
-      {
-        code: "chantily",
-        description: "Chantily (extra do Café)",
-        value: 1.50,
-      },
-      {
-        code: "suco",
-        description: "Suco Natural",
-        value: 6.20,
-      },
-      {
-        code: "sanduiche",
-        description: "Sanduíche",
-        value: 6.50,
-      },
-      {
-        code: "queijo",
-        description: "Queijo (extra do Sanduíche)",
-        value: 2.00,
-      },
-      {
-        code: "salgado",
-        description: "Salgado",
-        value: 7.25,
-      },
-      {
-        code: "combo1",
-        description: "1 Suco e 1 Sanduíche",
-        value: 9.50,
-      },
-      {
-        code: "combo2",
-        description: "1 Café e 1 Sanduíche",
-        value: 7.50,
-      },
-    ];
+    this.itens=[];
   }
 
- getItem(code) {
-    return this.items.find((item) => item.code === code);
+  setItems() {
+    const cafe = new ItemLanchonete("cafe", "Café", 3.00);
+    this.itens.push(cafe);
+
+    const chantily = new ItemLanchonete("chantily", "Chantily (extra do Café)", 1.50);
+    this.itens.push(chantily);
+
+    const suco = new ItemLanchonete("suco", "Suco Natural", 6.20);
+    this.itens.push(suco);
+
+    const sanduiche = new ItemLanchonete("sanduiche", "Sanduíche", 6.50);
+    this.itens.push(sanduiche);
+
+    const queijo = new ItemLanchonete("queijo", "Queijo (extra do Sanduíche)", 2.00);
+    this.itens.push(queijo);
+
+    const salgado = new ItemLanchonete("salgado", "Salgado", 7.25);
+    this.itens.push(salgado);
+
+    const combo1 = new ItemLanchonete("combo1", "1 Suco e 1 Sanduíche", 9.50);
+    this.itens.push(combo1);
+
+    const combo2 = new ItemLanchonete("combo2", "1 Café e 1 Sanduíche", 7.50);
+    this.itens.push(combo2);
+
   }
+
 }
 
-export {CardapioDaLanchonete};
+export { CardapioDaLanchonete };
