@@ -1,7 +1,8 @@
-import FormaDePagamento from "./Forma-de-pagamento.js";
+import { FormaDePagamento } from "./Forma-de-pagamento.js";
 
 class FormaDePagamentoCredito extends FormaDePagamento{
   constructor(){
+    super()
     this.taxa = 1.03;
     this.forma = "credito"; 
   }

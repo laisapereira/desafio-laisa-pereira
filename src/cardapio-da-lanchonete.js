@@ -1,3 +1,6 @@
+import { ItemLanchonete } from "./item-lanchonete.js";
+
+
 class CardapioDaLanchonete {
   constructor() {
     this.itens=[];
@@ -27,7 +30,13 @@ class CardapioDaLanchonete {
 
     const combo2 = new ItemLanchonete("combo2", "1 Café e 1 Sanduíche", 7.50);
     this.itens.push(combo2);
+  }
 
+
+
+
+  getItem(codigo) {
+    return this.itens.find((item) => item.codigo === codigo);
   }
 
 }

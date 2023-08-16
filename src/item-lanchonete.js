@@ -5,3 +5,5 @@ class ItemLanchonete {
         this.valor = valor;
     }
 }
+
+export { ItemLanchonete };

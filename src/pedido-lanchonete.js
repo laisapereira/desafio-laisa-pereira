@@ -1,4 +1,4 @@
-import { CardapioDaLanchonete } from "./cardapio-da-lanchonete.js";
+ import { CardapioDaLanchonete } from "./cardapio-da-lanchonete.js";
 
 class PedidosLanchonete {
   constructor() {
@@ -7,40 +7,46 @@ class PedidosLanchonete {
   }
 
   verificaPedidoFeito(itens) {
-    const itemInfo = cardapio.getItem(item.code);
+    const cardapio = new CardapioDaLanchonete();
+    const erros = [];
+  
+
     if (itens.length === 0) {
-      return "Não há itens no carrinho de compra!";
+      erros.push("Não há itens no carrinho de compra!") 
     }
     
     itens.map((item) => {
       if (item.quantidade === 0) {
-        return "Quantidade inválida!";
+       erros.push("Quantidade inválida!")
       } 
-      if (item.code != cardapio.getItem(item.code)) {
-        return "Item inválido!";
+      if (item.codigo != cardapio.getItem(item.codigo)) {
+        erros.push("Item inválido!")
       } 
        
     });
 
-    } }
 
-   if (itemInfo.code.includes("combo1") || itemInfo.code.includes("combo2")) {
+  if (itens.includes("combo1") || itens.includes("combo2")) {
       return "Combo não pode ser pedido sem o principal!" }
+    
 
-   const possuiPrincipalComExtra = itens.some((item) =>
-      item.code === "queijo" && (itens.some(otherItem => otherItem.code === "sanduiche")) ||
-      item.code === "chantily" && (itens.some(otherItem => otherItem.code === "cafe"))
-  );
+  const possuiPrincipalComExtra = itens.some((item) =>
+  (item.codigo === "queijo" && itens.some(otherItem => otherItem.codigo === "sanduiche")) ||
+  (item.codigo === "chantily" && itens.some(otherItem => otherItem.codigo === "cafe"))
+);
 
-   if (possuiPrincipalComExtra) {
-      itens.reduce((acc, item) => {  
-      return acc + item.value * item.quantidade;
-    }, 0);
-
-  } else {
-    return "Item extra não pode ser pedido sem o principal";
+   let podeCalcular = false;
+   if (!possuiPrincipalComExtra) {
+    podeCalcular = true;
+   } else {
+    erros.push("Item extra não pode ser pedido sem o principal")
+    !podeCalcular 
   } 
+  return { podeCalcular, erros };
+  }
 
+
+}
 export { PedidosLanchonete };
 
 
